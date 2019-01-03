@@ -58,7 +58,7 @@ $("#buttonSection").on("click", ".btn", function () {
                 topicImage.attr("data-still", results[i].images.fixed_height_still.url);
                 topicImage.attr("data-animate", results[i].images.fixed_height.url)
                 topicImage.attr("data-state", "still")
-                
+
 
 
                 if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
@@ -70,27 +70,28 @@ $("#buttonSection").on("click", ".btn", function () {
                     $("#imageDisplay").prepend(topicDiv);
                 }
 
-                $(".gif").on("click", function (event) {
-
-                    $(".gif").each(function () {
-                        event.preventDefault();
-
-                        // gets the current state of the clicked gif 
-                        var state = $(this).attr("data-state");
-                        console.log(state);
-                        // according to the current state gifs toggle between animate and still 
-                        if (state === "still") {
-                            $(this).attr("src", $(this).attr("data-animate"));
-                            $(this).attr("data-state", "animate");
-                        } else {
-                            $(this).attr("src", $(this).attr("data-still"));
-                            $(this).attr("data-state", "still");
-                        }
-                    });
-
-                });
 
             }
         });
 
+});
+
+$(document).ready(function () {
+    console.log("ready!");
+
+    $('body').on('click','.gif', function(){
+        event.preventDefault();
+
+        // gets the current state of the clicked gif 
+        var state = $(this).attr("data-state");
+        console.log(state);
+        // according to the current state gifs toggle between animate and still 
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        } else if (state === "animate") {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
+    });
 });
