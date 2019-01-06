@@ -8,7 +8,7 @@ var btnCreator = function () {
     $("#buttonSection").empty();
     // loops through the array and creates buttons
     for (i = 0; i < topics.length; i++) {
-        buttonTopic = $("<button type=" + "button" + ">" + topics[i] + "</button>").addClass("btn btn-info col-xs-2").attr("data-topic", topics[i]);
+        buttonTopic = $("<button type=" + "button" + ">" + topics[i] + "</button>").addClass("btn btn-info col-xs-2").attr("data-topic", topics[i]).css("margin", 5);
         $("#buttonSection").prepend(buttonTopic);
     };
     //console.log(buttonTopic);
@@ -79,7 +79,7 @@ $("#buttonSection").on("click", ".btn", function () {
 $(document).ready(function () {
     console.log("ready!");
 
-    $('body').on('click','.gif', function(){
+    $('body').on('click', '.gif', function () {
         event.preventDefault();
 
         // gets the current state of the clicked gif 
